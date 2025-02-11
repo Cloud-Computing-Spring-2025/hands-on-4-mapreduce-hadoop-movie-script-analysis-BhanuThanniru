@@ -1,8 +1,10 @@
 
 # Analyze the movie script using Hadoop MapReduce
 
-The **Movie Script Analysis** project implements a Hadoop MapReduce program to analyze a movie script dataset. The program processes a movie script where each line represents a character's dialogue. The key tasks are:
+The **Movie Script Analysis** project implements a Hadoop MapReduce program to analyze a movie script dataset. The program processes a movie script where each line represents a character's dialogue.
 
+# Approach and Implementation
+The key tasks are:
 1. **Most Frequent Words by Character**
    - Mapper (CharacterWordMapper): Extracts each word from the character's dialogue and emits the word with a count of 1.
    - Reducer (CharacterWordReducer): Aggregates the word counts for each character and outputs the total frequency for each word.
@@ -122,3 +124,50 @@ To copy the output from HDFS to your local machine:
     ```
 # Challenge faced
 - The path to the jar file mismatch: Resolved this by checking the path exactly where the jar file has been created.
+
+
+# Sample input:
+   ```
+   Sirius: I did my waiting! Twelve years of it! In Azkaban!
+   Ron: That's good brilliant!
+   Voldemort: We could all have been killed - or worse, expelled.
+   ```
+# Sample output:
+# Task 1:
+```
+- 1
+I 1
+did 1
+my 1
+waiting! 1
+Twelve 1
+years 1
+of 1
+it! 1
+In 1
+Azkaban! 1
+That's 1
+good 1
+brilliant! 1
+We 1
+could 1
+all 1
+have 1
+been 1
+killed 1
+or 1
+worse 1
+expelled 1
+```
+# Task 2:
+```
+Sirius 49
+Ron 21
+Voldemort 51
+```
+# Task 3:
+```
+Sirius [I, did, my, waiting!, Twelve, years, of, it!, In, Azkaban!]
+Ron [That's, good, brilliant!]
+Voldemort [We, could, all, have, been, killed, or, -, worse, expelled]
+```
